@@ -54,7 +54,7 @@ const SignUp = ({enqueueSnackbar}) => {
     }
 
     // Debouncing 
-    const handler = useCallback(()=>debounce(updateQuery, 100), [searchText],);
+    const handler = useCallback(()=>debounce(updateQuery, 100), [searchText,updateQuery],);
 
     // To call the search API after search text updations
     useEffect(
