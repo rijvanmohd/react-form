@@ -12,7 +12,6 @@ const SignUp = ({enqueueSnackbar}) => {
     const [email, setEmail] = useState("")
     const [data,setData] = useState([])
     const [selected,setSelected] = useState([])
-    const [disable,setDisable] = useState(false)
 
     const ref = useRef()
 
@@ -67,7 +66,6 @@ const SignUp = ({enqueueSnackbar}) => {
     // Interest selection 
     const onTagSelection = (event) => {
         if(selected.length >= 3){
-            setDisable(true)
             setSearchText("")
             setData([])
             enqueueSnackbar('Max 3 can be selected',{variant:'warning'})
@@ -103,7 +101,7 @@ const SignUp = ({enqueueSnackbar}) => {
     const SignUp = (details) => {
         AccountAPI.signup(details)
         .then((response)=>{
-            if(response.status!=400){
+            if(response.status!==400){
                 enqueueSnackbar("Signed Up Successfully",{variant:'success'})
             }
             else{
@@ -132,7 +130,7 @@ const SignUp = ({enqueueSnackbar}) => {
             enqueueSnackbar("Email Address is not valid", { variant: "error" });
             return 
         }
-        if(selected.length == 0){
+        if(selected.length === 0){
             enqueueSnackbar("Please select atleast one interest", { variant: "error" });
             return 
         }
